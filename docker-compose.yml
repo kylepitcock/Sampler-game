@@ -1,7 +1,7 @@
 services:
   server:
     build:
-      context: ./server
+      context: https://github.com/kylepitcock/Sampler-game.git#${GIT_REF:-main}:server
       dockerfile: Dockerfile
     container_name: sampled-server
     ports:
@@ -10,7 +10,7 @@ services:
 
   client:
     build:
-      context: ./client
+      context: https://github.com/kylepitcock/Sampler-game.git#${GIT_REF:-main}:client
       dockerfile: Dockerfile
       args:
         VITE_API_BASE: ${VITE_API_BASE:-http://localhost:3001}

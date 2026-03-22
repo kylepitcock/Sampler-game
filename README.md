@@ -42,6 +42,11 @@ Multiplayer music guessing game inspired by songl.io / skribbl.io:
 - Override it at build time if needed:
    - `VITE_API_BASE=https://sampled.pitcocks.org docker compose up --build -d`
 
+### Build directly from GitHub
+- `docker-compose.yml` is configured to build from this repo on GitHub instead of local paths.
+- Optional: set `GIT_REF` to deploy another branch/tag/commit:
+   - `GIT_REF=main docker compose up --build -d`
+
 ## Notes
 - This MVP uses iTunes preview audio clips for zero-auth setup.
 - If you want Spotify/Apple Music accounts and full catalog behavior, the server can be extended with OAuth and provider APIs.
