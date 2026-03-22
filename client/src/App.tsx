@@ -62,7 +62,25 @@ function makeChatItem(text: string, tone?: 'ok' | 'warn' | 'neutral', kind: 'cha
   }
 }
 
-const API_BASE = import.meta.env.VITE_API_BASE || ''
+const API_BASE = (() => {
+  const configured = import.meta.env.VITE_API_BASE
+  if (configured !== undefined && configured !== null && configured !== '') {
+    return configured
+  }
+
+  if (typeof window === 'undefined') return ''
+
+  const protocol = window.location.protocol
+  const hostname = window.location.hostname
+  const isLocalHost = hostname === 'localhost' || hostname === '127.0.0.1'
+  const isViteDevPort = window.location.port === '5173'
+
+  if (import.meta.env.DEV || isViteDevPort || isLocalHost) {
+    return `${protocol}//${hostname}:3001`
+  }
+
+  return ''
+})()
 const APP_NAME = 'Sampled'
 const JOIN_BASE_URL = (import.meta.env.VITE_APP_BASE_URL || 'https://sampled.pitcocks.org').replace(/\/$/, '')
 const categories = [
@@ -131,6 +149,14 @@ function App() {
 
     socket.on('disconnect', () => {
       setConnected(false)
+    })
+
+    socket.on('connect_error', (error) => {
+      setConnected(false)
+      setChatItems((prev) => [
+        makeChatItem(`Connection error: ${error.message}`, 'warn', 'system'),
+        ...prev
+      ].slice(0, 80))
     })
 
     socket.on('room:update', (state: RoomState) => {
