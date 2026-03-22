@@ -1,0 +1,312 @@
+.app-shell {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  display: grid;
+  gap: 16px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+header p {
+  margin: 6px 0 0;
+  color: #c8cfe7;
+}
+
+.card {
+  background: #1a2030;
+  border: 1px solid #29324a;
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.join-grid {
+  display: grid;
+  gap: 10px;
+  max-width: 420px;
+}
+
+.inline-actions {
+  display: flex;
+  gap: 8px;
+}
+
+label {
+  display: grid;
+  gap: 6px;
+  font-size: 0.95rem;
+}
+
+input,
+select {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #3b4869;
+  background: #12192a;
+  color: #f4f6ff;
+  padding: 9px 10px;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid #4e69d5;
+  background: #3f58c4;
+  color: #fff;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+button.queued-btn {
+  background: #2f9f68;
+  border-color: #2f9f68;
+}
+
+.top-bar {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, auto));
+  gap: 10px;
+  align-items: center;
+}
+
+.lobby-bar {
+  grid-template-columns: repeat(6, minmax(0, auto));
+}
+
+.game-bar {
+  grid-template-columns: repeat(5, minmax(0, auto));
+}
+
+.game-screen {
+  display: grid;
+  gap: 16px;
+}
+
+.game-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr 320px;
+  gap: 16px;
+  align-items: start;
+}
+
+.players-panel,
+.music-panel,
+.chat-panel {
+  min-height: 420px;
+}
+
+.queue-next {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid #2d3a5c;
+}
+
+.queue-next h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.compact-results {
+  max-height: 280px;
+  overflow: auto;
+}
+
+.compact-results li {
+  padding: 8px;
+}
+
+.compact-results li p {
+  margin: 2px 0 0;
+  font-size: 0.82rem;
+}
+
+.chat-panel {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 10px;
+}
+
+.chat-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 8px;
+  max-height: 460px;
+  overflow: auto;
+}
+
+.chat-item {
+  background: #12192a;
+  border: 1px solid #2d3a5c;
+  border-radius: 8px;
+  padding: 8px 10px;
+  word-break: break-word;
+}
+
+.chat-item.ok {
+  border-color: #2f9f68;
+}
+
+.chat-item.warn {
+  border-color: #b6782c;
+}
+
+.chat-item.system {
+  opacity: 0.92;
+}
+
+.chat-form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+}
+
+.side-guess-form {
+  margin-top: 0;
+}
+
+.cover-wrap {
+  margin-top: 12px;
+  border-radius: 12px;
+  border: 1px solid #2d3a5c;
+  overflow: hidden;
+  background: #12192a;
+  aspect-ratio: 1 / 1;
+  max-width: 320px;
+}
+
+.cover-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.06);
+  transition: filter 500ms linear;
+}
+
+.cover-placeholder {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  color: #bcc5e2;
+  font-size: 0.95rem;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.players,
+.results,
+.feed {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.players li,
+.results li {
+  background: #12192a;
+  border: 1px solid #2d3a5c;
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+}
+
+.players li.self {
+  border-color: #7b97ff;
+}
+
+.results li p {
+  margin: 3px 0 0;
+  color: #bcc5e2;
+  font-size: 0.9rem;
+}
+
+.guess-form,
+.search-form {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+}
+
+.player {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.feed li {
+  background: #12192a;
+  border: 1px solid #2d3a5c;
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.feed li.ok {
+  border-color: #2f9f68;
+}
+
+.feed li.warn {
+  border-color: #b6782c;
+}
+
+.subtle {
+  color: #b7c0de;
+  font-size: 0.92rem;
+}
+
+.countdown {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  background: #12192a;
+  border: 1px solid #4e69d5;
+  color: #dbe4ff;
+  font-weight: 600;
+}
+
+.owner-turn-banner {
+  margin: 0 0 10px;
+  padding: 10px;
+  border-radius: 8px;
+  background: #1f2a45;
+  border: 1px solid #4e69d5;
+  color: #dbe4ff;
+  font-weight: 600;
+}
+
+@media (max-width: 850px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .top-bar {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .lobby-bar,
+  .game-bar {
+    grid-template-columns: 1fr;
+  }
+
+  .game-layout {
+    grid-template-columns: 1fr;
+  }
+}
