@@ -13,7 +13,7 @@ services:
       context: https://github.com/kylepitcock/Sampler-game.git#${GIT_REF:-main}:client
       dockerfile: Dockerfile
       args:
-        VITE_API_BASE: ${VITE_API_BASE:-http://localhost:3001}
+        VITE_API_BASE: ${VITE_API_BASE:-}
     container_name: sampled-client
     depends_on:
       - server

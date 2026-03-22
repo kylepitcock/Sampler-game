@@ -38,7 +38,8 @@ Multiplayer music guessing game inspired by songl.io / skribbl.io:
    - `docker compose down`
 
 ### API base URL for client build
-- By default, the client image is built with `VITE_API_BASE=http://localhost:3001`.
+- By default, the client image is built with `VITE_API_BASE` empty (same-origin).
+- Nginx proxies `/api` and `/socket.io` to the `server` service, so links work across devices without `localhost` issues.
 - Override it at build time if needed:
    - `VITE_API_BASE=https://sampled.pitcocks.org docker compose up --build -d`
 

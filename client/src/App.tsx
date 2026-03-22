@@ -62,7 +62,7 @@ function makeChatItem(text: string, tone?: 'ok' | 'warn' | 'neutral', kind: 'cha
   }
 }
 
-const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:3001'
+const API_BASE = import.meta.env.VITE_API_BASE || ''
 const APP_NAME = 'Sampled'
 const JOIN_BASE_URL = (import.meta.env.VITE_APP_BASE_URL || 'https://sampled.pitcocks.org').replace(/\/$/, '')
 const categories = [
