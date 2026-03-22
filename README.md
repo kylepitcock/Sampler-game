@@ -48,6 +48,14 @@ Multiplayer music guessing game inspired by songl.io / skribbl.io:
 - Optional: set `GIT_REF` to deploy another branch/tag/commit:
    - `GIT_REF=main docker compose up --build -d`
 
+### If other devices show "Disconnected"
+- Make sure old client images are removed so stale `VITE_API_BASE=http://localhost:3001` is not reused.
+- Rebuild cleanly:
+   - `docker compose down`
+   - `docker image rm sampled-client sampled-server` (ignore errors if missing)
+   - `docker compose build --no-cache`
+   - `docker compose up -d`
+
 ## Notes
 - This MVP uses iTunes preview audio clips for zero-auth setup.
 - If you want Spotify/Apple Music accounts and full catalog behavior, the server can be extended with OAuth and provider APIs.
