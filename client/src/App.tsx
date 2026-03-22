@@ -62,25 +62,7 @@ function makeChatItem(text: string, tone?: 'ok' | 'warn' | 'neutral', kind: 'cha
   }
 }
 
-const API_BASE = (() => {
-  const configured = import.meta.env.VITE_API_BASE
-  if (configured !== undefined && configured !== null && configured !== '') {
-    return configured
-  }
-
-  if (typeof window === 'undefined') return ''
-
-  const protocol = window.location.protocol
-  const hostname = window.location.hostname
-  const isLocalHost = hostname === 'localhost' || hostname === '127.0.0.1'
-  const isViteDevPort = window.location.port === '5173'
-
-  if (import.meta.env.DEV || isViteDevPort || isLocalHost) {
-    return `${protocol}//${hostname}:3001`
-  }
-
-  return ''
-})()
+const API_BASE = import.meta.env.VITE_API_BASE ?? ''
 const APP_NAME = 'Sampled'
 const JOIN_BASE_URL = (import.meta.env.VITE_APP_BASE_URL || 'https://sampled.pitcocks.org').replace(/\/$/, '')
 const categories = [
@@ -137,7 +119,7 @@ function App() {
   useEffect(() => {
     socket = io(API_BASE, {
       autoConnect: true,
-      path: '/socket.io',
+      path: '/socket.io/',
       transports: ['polling'],
       upgrade: false,
       timeout: 20000,
