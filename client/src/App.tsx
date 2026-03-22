@@ -116,7 +116,13 @@ function App() {
   }, [])
 
   useEffect(() => {
-    socket = io(API_BASE, { autoConnect: true })
+    socket = io(API_BASE, {
+      autoConnect: true,
+      path: '/socket.io',
+      transports: ['polling'],
+      timeout: 20000,
+      reconnectionAttempts: 20
+    })
 
     socket.on('connect', () => {
       setConnected(true)

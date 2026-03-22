@@ -12,7 +12,10 @@ const io = new Server(httpServer, {
   cors: {
     origin: '*',
     methods: ['GET', 'POST']
-  }
+  },
+  transports: ['polling', 'websocket'],
+  pingInterval: 25000,
+  pingTimeout: 60000
 });
 
 const PORT = process.env.PORT || 3001;
