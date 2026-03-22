@@ -32,7 +32,7 @@ Multiplayer music guessing game inspired by songl.io / skribbl.io:
 - Build and start both services:
    - `docker compose up --build -d`
 - Open app:
-   - Client: `http://localhost:8080`
+   - Client: `http://localhost:5173`
    - Server: `http://localhost:3001`
 - Stop containers:
    - `docker compose down`
