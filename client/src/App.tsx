@@ -119,9 +119,9 @@ function App() {
   useEffect(() => {
     socket = io(API_BASE, {
       autoConnect: true,
-      path: '/socket.io/',
-      transports: ['polling'],
-      upgrade: false,
+      path: '/socket.io',
+      transports: ['websocket', 'polling'],
+      rememberUpgrade: true,
       timeout: 20000,
       reconnectionAttempts: 20
     })
