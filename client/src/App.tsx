@@ -119,7 +119,7 @@ function App() {
     socket = io(API_BASE, {
       autoConnect: true,
       path: '/socket.io',
-      transports: ['polling'],
+      transports: ['websocket', 'polling'],
       timeout: 20000,
       reconnectionAttempts: 20
     })
