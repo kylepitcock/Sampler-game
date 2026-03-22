@@ -272,6 +272,11 @@ button.queued-btn {
   font-size: 0.92rem;
 }
 
+.error-text {
+  color: #ff8c8c;
+  font-size: 0.9rem;
+}
+
 .countdown {
   margin-top: 10px;
   padding: 10px;

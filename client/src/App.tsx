@@ -123,6 +123,7 @@ function App() {
   const [countdownLeft, setCountdownLeft] = useState(0)
   const [queuedSongIds, setQueuedSongIds] = useState<Set<number>>(new Set())
   const [copiedInvite, setCopiedInvite] = useState(false)
+  const [connectErrorMessage, setConnectErrorMessage] = useState('')
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
@@ -145,6 +146,7 @@ function App() {
     socket.on('connect', () => {
       setConnected(true)
       setSelfId(socket?.id || '')
+      setConnectErrorMessage('')
     })
 
     socket.on('disconnect', () => {
@@ -153,6 +155,7 @@ function App() {
 
     socket.on('connect_error', (error) => {
       setConnected(false)
+      setConnectErrorMessage(error.message || 'Unable to connect to realtime server.')
       setChatItems((prev) => [
         makeChatItem(`Connection error: ${error.message}`, 'warn', 'system'),
         ...prev
@@ -360,6 +363,7 @@ function App() {
           </button>
           {linkedRoomCode && <small>Invite link room detected: {linkedRoomCode}</small>}
           <small>Status: {connected ? 'connected' : 'disconnected'}</small>
+          {connectErrorMessage && <small className="error-text">Connection error: {connectErrorMessage}</small>}
         </section>
       )}
 
